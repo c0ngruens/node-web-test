@@ -1,6 +1,6 @@
 <template>
     <div class="page-container">
-      <md-app md-mode="reveal" style="min-height: 100vh;">
+      <md-app md-mode="reveal" height="100%">
         <md-app-toolbar class="md-primary">
           <div class="md-toolbar-section-start">
             <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
@@ -17,17 +17,19 @@
           </div>
         </md-app-toolbar>
 
-        <md-app-drawer :md-active.sync="menuVisible">
-          <!-- <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar> -->
+        <md-app-drawer :md-active.sync="menuVisible" >
+          <md-toolbar class="md-transparent" md-elevation="0">
+            <span class="md-title">My App</span>
+          </md-toolbar>
 
           <md-list>
-            <md-list-item v-for="menuItem in menuItems" :key="menuItem.text">
+            <md-list-item v-for="menuItem in menuItems" :key="menuItem.text" @click="routeGo ( menuItem.route)">
               <md-icon>{{menuItem.icon}}</md-icon>
               <span class="md-list-item-text">{{menuItem.text}}</span>
             </md-list-item>
           </md-list>
         </md-app-drawer>
-        <md-app-content>
+        <md-app-content >
             <slot name="content"></slot>
         </md-app-content>
       </md-app>
@@ -39,17 +41,26 @@ export default {
   name: 'Page',
   data: () => ({
     menuVisible: false,
-    title: 'COOL',
     menuItems: [
-      { text: 'Home', icon: 'home' },
-      { text: 'Settings', icon: 'settings' }
+      { text: 'Home', icon: 'home', route: '/' },
+      { text: 'Settings', icon: 'settings', route: '/settings' }
     ]
-  })
+  }),
+  props: ['title'],
+  methods: {
+    routeGo (route) {
+      this.$router.push(route)
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.md-app {
+  min-height: 350px;
+  border: 1px solid rgba(#000, 0.12);
+}
 .md-drawer {
   width: 230px;
   max-width: calc(100vw - 125px);

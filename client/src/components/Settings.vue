@@ -4,9 +4,6 @@
              <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
                  <p>TEST</p>
              </div>
-             <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
-                 <p>TEST 2</p>
-             </div>
         </div>
     </page>
 </template>
@@ -15,7 +12,7 @@
 import Page from '@/components/Page.vue'
 
 export default {
-  name: 'Home',
+  name: 'Settings',
   data: () => ({
     something: 'Home'
   }),
