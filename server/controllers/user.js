@@ -7,5 +7,8 @@ module.exports = {
   },
   secret: async (req, res, next) => {
     console.log('secret controller called.')
+    res.send({
+      message: `I'm here`
+    })
   }
 }

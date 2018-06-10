@@ -17,7 +17,8 @@
             <md-input v-model="password" type="password"></md-input>
           </md-field>
         </md-card-content>
-        <md-card-actions class="md-layout md-alignment-center">
+        <md-card-actions md-alignment="space-between">
+          <router-link to="/register"><md-button>Register</md-button></router-link>
           <md-button class="md-raised md-primary">Enter</md-button>
         </md-card-actions>
         <div class="space"></div>
