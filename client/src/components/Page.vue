@@ -1,13 +1,13 @@
 <template>
     <div class="page-container">
-      <md-app md-mode="reveal" height="100%">
+      <md-app class="md-layout-column">
         <md-app-toolbar class="md-primary">
           <div class="md-toolbar-section-start">
             <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
               <md-icon>menu</md-icon>
             </md-button>
 
-            <router-link to="/"><span class="md-title">{{title}}</span></router-link>
+            <span class="md-title">{{title}}</span>
           </div>
 
           <div class="md-toolbar-section-end">
@@ -29,7 +29,7 @@
             </md-list-item>
           </md-list>
         </md-app-drawer>
-        <md-app-content >
+        <md-app-content>
             <slot name="content"></slot>
         </md-app-content>
       </md-app>
@@ -57,9 +57,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.page-container {
+  min-height: 300px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(#000, 0.12);
+}
 .md-app {
   min-height: 350px;
-  border: 1px solid rgba(#000, 0.12);
+  height: 100vh;
 }
 .md-drawer {
   width: 230px;
