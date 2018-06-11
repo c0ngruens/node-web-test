@@ -22,7 +22,7 @@
             <span class="md-error" v-else-if="!$v.form.password.minLength">Password must contanin no less then {{ $v.form.password.$params.minLength.min }} characters</span>
             <span class="md-error" v-else-if="!$v.form.password.maxLength">Password must contanin no more then 30 characters</span>
           </md-field>
-          <md-field :class="getValidationClass ('confirmPassword')">
+          <md-field :class="getValidationClass ('confirmPassword')" :md-toggle-password="false">
             <label>Confirm password</label>
             <md-input v-model="form.confirmPassword" type="password" :disabled="sending"></md-input>
             <span class="md-error" v-if="!$v.form.confirmPassword.required">The password is required</span>

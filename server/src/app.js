@@ -2,10 +2,12 @@ const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
+const config = require('./config/config')
+
 const app = express()
 
 /**
- * Middlewares
+ * Middleware
  */
 app.use(morgan('combined'))
 app.use(bodyParser.json())
@@ -13,11 +15,10 @@ app.use(bodyParser.json())
 /**
  * Routes
  */
-app.use('/user', require('../routes/user'))
+require('./routes')(app)
 
 /**
- * Start server
+ * Start applicatoin
  */
-const port = process.env.PORT || 8081
-app.listen(port)
-console.log(`Server listening at port ${port}`)
+app.listen(config.app.port)
+console.log(`Server listening at port ${config.app.port}`)
